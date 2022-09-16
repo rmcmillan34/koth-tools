@@ -23,7 +23,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/ryan-mcmillan34/]]
+[![LinkedIn][linkedin-shield]][linkedin-url]
 
 
 
@@ -34,7 +34,7 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-<h3 align="center">project_title</h3>
+<h3 align="center">KotH Tools</h3>
 
   <p align="center">
     project_description
@@ -42,11 +42,11 @@
     <a href="https://github.com/rmcmillan34/koth-tools"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/rmcmillan34/koth-tools">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/rmcmillan34/koth-tools/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/rmcmillan34/koth-tools/issues">Request Feature</a>
   </p>
 </div>
 
@@ -195,9 +195,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+Your Name - [@RizzSec](https://twitter.com/RizzSec)
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/rmcmillan34/koth-tools](https://github.com/rmcmillan34/koth-tools)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -216,18 +216,18 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo_name.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo_name/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo_name.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo_name/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo_name.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo_name/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo_name.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo_name/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/rmcmillan34/koth-tools.svg?style=for-the-badge
+[contributors-url]: https://github.com/rmcmillan34/koth-tools/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/rmcmillan34/koth-tools.svg?style=for-the-badge
+[forks-url]: https://github.com/rmcmillan34/koth-tools/network/members
+[stars-shield]: https://img.shields.io/github/stars/rmcmillan34/koth-tools.svg?style=for-the-badge
+[stars-url]: https://github.com/rmcmillan34/koth-tools/stargazers
+[issues-shield]: https://img.shields.io/github/issues/rmcmillan34/koth-tools.svg?style=for-the-badge
+[issues-url]: https://github.com/rmcmillan34/koth-tools/issues
+[license-shield]: https://img.shields.io/github/license/rmcmillan34/koth-tools.svg?style=for-the-badge
+[license-url]: https://github.com/rmcmillan34/koth-tools/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/linkedin_username
+[linkedin-url]: https://linkedin.com/in/ryan-mcmillan34
 [product-screenshot]: images/screenshot.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
