@@ -17,3 +17,5 @@ echo "             ░ ░     ░                    ░  ░    ░  ░"
 echo
 echo "Change the running network application ports forcing other users to re-enumerate the box in TryHackMe King of the Hill or Attack/Defense style CTFs"
 echo "Ryan McMillan 2022"
+echo -e "\033[0m"
+echo
