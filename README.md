@@ -37,7 +37,7 @@
 <h3 align="center">KotH Tools</h3>
 
   <p align="center">
-    project_description
+    A writeup of King of the Hill/Attack & Defence style CTF tips and techniques, along with some helpful scripts to use during gameplay.
     <br />
     <a href="https://github.com/rmcmillan34/koth-tools"><strong>Explore the docs »</strong></a>
     <br />
@@ -83,62 +83,70 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started: To avoid retyping too much info. Do a search and replace with your text editor for the following: `github_username`, `repo_name`, `twitter_handle`, `linkedin_username`, `email_client`, `email`, `project_title`, `project_description`
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-
-
 ### Built With
 
-* [![Next][Next.js]][Next-url]
-* [![React][React.js]][React-url]
-* [![Vue][Vue.js]][Vue-url]
-* [![Angular][Angular.io]][Angular-url]
-* [![Svelte][Svelte.dev]][Svelte-url]
-* [![Laravel][Laravel.com]][Laravel-url]
-* [![Bootstrap][Bootstrap.com]][Bootstrap-url]
-* [![JQuery][JQuery.com]][JQuery-url]
+* Bash
+* Markdown
+
+
+### KotH Write-up
+
+### Scripts
+
+#### Randomiser
+
+[![Randomiser Script Screen Shot][randomiser-screenshot]](https://github.com/rmcmillan34/koth-tools)
+Randomiser script in use
+
+#### Ghost-Writer
+
+[![Ghost-writer Script Screen Shot][ghost_writer-screenshot]](https://github.com/rmcmillan34/koth-tools)
+Ghost_writer script in action
+
+#### ASSHHOLE
+
+#### Portal
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+---
 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+To use the scripts in this repo please do the following:
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+The scripts contained in this repo are designed to be run as root from the target machine. 
+As such they should be uploaded to and marked as executable on the target machine
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/rmcmillan34/koth-tools.git
    ```
-3. Install NPM packages
+3. Host scripts to be uploaded to target machine (with Python SimpleHTTPServer for example)
    ```sh
-   npm install
+   sudo python3 -m SimpleHTTPServer 80
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+4. Download script from target machine
+   ```sh
+   wget http://{HTTP_SERVER_IP}:80
    ```
-
+5. Set scripts as executable
+   ```sh
+   sudo chmod +x {SCRIPT_NAME}
+   ```
+6. Run the script
+   ```sh
+   ./{SCRIPT_NAME}
+   ```
+   
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
+---
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -154,10 +162,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
-    - [ ] Nested Feature
+- [ ] KotH Write-up
+- [ ] ASSHHOLE Script
+- [ ] Portal Script
+- [ ] Python REPL (Read Evaluate Print Loop)
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
@@ -195,7 +203,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@RizzSec](https://twitter.com/RizzSec)
+Ryan McMillan - Twitter:[@RizzSec](https://twitter.com/RizzSec)
 
 Project Link: [https://github.com/rmcmillan34/koth-tools](https://github.com/rmcmillan34/koth-tools)
 
@@ -206,7 +214,7 @@ Project Link: [https://github.com/rmcmillan34/koth-tools](https://github.com/rmc
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
+* [othnieldrew](https://github.com/othnieldrew/Best-README-Template) - README Template
 * []()
 * []()
 
@@ -228,7 +236,8 @@ Project Link: [https://github.com/rmcmillan34/koth-tools](https://github.com/rmc
 [license-url]: https://github.com/rmcmillan34/koth-tools/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/ryan-mcmillan34
-[product-screenshot]: images/screenshot.png
+[randomiser-screenshot]: images/randomiser.png
+[ghost_writer-screenshot]: images/ghost_writer.png
 [Next.js]: https://img.shields.io/badge/next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white
 [Next-url]: https://nextjs.org/
 [React.js]: https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
